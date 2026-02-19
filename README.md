@@ -40,6 +40,9 @@ The current release features a **Random Forest Classifier** trained on 6.3 milli
 | **Precision** | **1.00** | Zero false positives on test set |
 | **Recall** | **1.00** | 100% fraud detection rate on test set |
 
+> [!IMPORTANT]
+> **Performance Note**: This model is trained on **synthetic data** (PaySim), where fraud patterns are often deterministic (e.g., specific account emptying rules). The near-perfect scores (0.999 AUC) are expected for this specific dataset but would likely be lower (~0.95+) in a real-world, noisy environment. We have verified that this is **not** due to target leakage (see [Feature Analysis](docs/FEATURE_ANALYSIS.md)).
+
 The trained model is available at `models/fraud_model.pkl`.
 
 ## Project Structure
