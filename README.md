@@ -20,7 +20,7 @@
 **CFD** is a modular, high-performance fraud detection system designed to identify malicious financial transactions with exceptional accuracy. Built on the PaySim dataset, it processes millions of transaction logs to flag fraud in real-time, leveraging advanced ensemble learning techniques to handle extreme class imbalances.
 
 > [!TIP]
-> **Deep Dive**: For a detailed explanation of the architecture, training process, and internal logic, see the [System Architecture & Operational Guide](docs/SYSTEM_OVERVIEW.md).
+> **Deep Dive**: For a technical breakdown, see the [System Architecture Guide](docs/SYSTEM_OVERVIEW.md). For a business perspective on value and usage, see the [Executive Summary](docs/EXECUTIVE_SUMMARY.md).
 
 ## Key Features
 
