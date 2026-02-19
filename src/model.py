@@ -56,7 +56,12 @@ class FraudDetector:
             except Exception as e:
                 logger.error(f"Error configuring XGBoost: {e}")
                 raise e
+        else:
+            raise ValueError(f"Unsupported model type: {self.model_type}")
             
+        if self.model is None:
+             raise ValueError("Model initialization failed.")
+
         self.model.fit(X_train, y_train)
         logger.info("Model training completed.")
 

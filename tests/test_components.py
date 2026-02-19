@@ -1,7 +1,5 @@
 import pytest
 import pandas as pd
-import numpy as np
-import os
 from src.data_loader import clean_data
 from src.features import feature_engineering
 from src.model import FraudDetector
@@ -53,11 +51,6 @@ def test_model_training(sample_df):
     
     assert detector.model is not None
     
-    preds = detector.predict(X_test) # Note: predict expects raw features if calling wrapper? 
-    # Wait, my wrapper 'predict' does: X_scaled = self.scaler.transform(X)
-    # But in test_model_training I got X_test which is ALREADY scaled from prepare_data.
-    # So I should not use detector.predict(X_test) from prepare_data output.
-    # I should use detector.model.predict(X_test)
-    
+    # We use detector.model.predict directly because X_test from prepare_data is already scaled
     preds = detector.model.predict(X_test)
     assert len(preds) == len(y_test)

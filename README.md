@@ -95,6 +95,8 @@ python main.py --mode predict --model_path models/fraud_model.pkl
 pytest tests/
 ```
 
+> For details on our Unit vs. Integration testing strategy, see the [Testing Guide](docs/TESTING_STRATEGY.md).
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
