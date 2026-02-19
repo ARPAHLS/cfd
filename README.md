@@ -2,14 +2,14 @@
 
 <img src="assets/cfdlogo.png" width="400" alt="CFD Logo">
 
-# CFD
+<br>
 
 **An Enterprise-Grade Credit Card Fraud Detection System**
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/Python-3.11%2B-blue)](https://www.python.org/)
-[![Status](https://img.shields.io/badge/Status-Production%20Ready-green)]()
-[![ARPA](https://img.shields.io/badge/Powered%20by-ARPA%20HLS-000000)](https://arpacorp.net)
+[![License](https://img.shields.io/badge/License-MIT-D6BCFA?style=flat-square)](LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.11%2B-90CDF4?style=flat-square&logo=python&logoColor=white)](https://www.python.org/)
+[![Dataset](https://img.shields.io/badge/Dataset-PaySim-4FD1C5?style=flat-square&logo=kaggle&logoColor=white)](https://www.kaggle.com/datasets/ealaxi/paysim1?resource=download)
+[![ARPA](https://img.shields.io/badge/Powered_by-ARPA_HLS-756f6a?style=flat-square)](https://arpacorp.net)
 
 <br>
 
