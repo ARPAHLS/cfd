@@ -19,8 +19,10 @@
 
 **CFD** is a modular, high-performance fraud detection system designed to identify malicious financial transactions with exceptional accuracy. Built on the PaySim dataset, it processes millions of transaction logs to flag fraud in real-time, leveraging advanced ensemble learning techniques to handle extreme class imbalances.
 
-> [!TIP]
-> **Deep Dive**: For a technical breakdown, see the [System Architecture Guide](docs/SYSTEM_OVERVIEW.md). For a business perspective on value and usage, including impact and reliability analysis, see the [Executive Summary](docs/EXECUTIVE_SUMMARY.md).
+<div style="background-color: #F4EBC8; padding: 15px; border-radius: 5px; border: 1px solid #dcdcdc; color: #333;">
+  <strong>💡 Tip:</strong> <br>
+  Deep Dive: For a technical breakdown, see the <a href="docs/SYSTEM_OVERVIEW.md">System Architecture Guide</a>. For a business perspective on value and usage, including impact and reliability analysis, see the <a href="docs/EXECUTIVE_SUMMARY.md">Executive Summary</a>.
+</div>
 
 ## Key Features
 
@@ -40,8 +42,10 @@ The current release features a **Random Forest Classifier** trained on 6.3 milli
 | **Precision** | **1.00** | Zero false positives on test set |
 | **Recall** | **1.00** | 100% fraud detection rate on test set |
 
-> [!IMPORTANT]
-> **Performance Note**: This model is trained on **synthetic data** (PaySim), where fraud patterns are often deterministic (e.g., specific account emptying rules). The near-perfect scores (0.999 AUC) are expected for this specific dataset but would likely be lower (~0.95+) in a real-world, noisy environment. We have verified that this is **not** due to target leakage (see [Feature Analysis](docs/FEATURE_ANALYSIS.md)).
+<div style="background-color: #A793AC; padding: 15px; border-radius: 5px; border: 1px solid #8e7cc3; color: #fff;">
+  <strong>⚠️ Disclaimer:</strong> <br>
+  <strong>Performance Note</strong>: This model is trained on <strong>synthetic data</strong> (PaySim), where fraud patterns are often deterministic (e.g., specific account emptying rules). The near-perfect scores (0.999 AUC) are expected for this specific dataset but would likely be lower (~0.95+) in a real-world, noisy environment. We have verified that this is <strong>not</strong> due to target leakage (see <a href="docs/FEATURE_ANALYSIS.md" style="color: #fff; text-decoration: underline;">Feature Analysis</a>).
+</div>
 
 The trained model is available at `models/fraud_model.pkl`.
 

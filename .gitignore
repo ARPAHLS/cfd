@@ -41,7 +41,7 @@ logs/
 *.log
 
 # Models (Exclude large serialized models)
-models/*.pkl
+# models/*.pkl
 models/*.joblib
 
 # Reports (Exclude generated reports)
