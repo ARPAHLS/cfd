@@ -1,10 +1,14 @@
-import pytest
-import pandas as pd
+"""
+Integration tests for the full pipeline.
+"""
 import os
 import sys
 import glob
+import pytest
+import pandas as pd
 
 # Add project root to sys.path to allow importing src
+# pylint: disable=wrong-import-position
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from src.data_loader import clean_data
@@ -15,6 +19,9 @@ MODEL_PATH = 'models/fraud_model.pkl'
 DATA_DIR = 'data'
 
 def get_data_file():
+    """
+    Helper to find a data file.
+    """
     files = glob.glob(os.path.join(DATA_DIR, '*.csv'))
     if files:
         return files[0]
@@ -29,45 +36,45 @@ def test_model_prediction_on_real_sample():
     """
     data_file = get_data_file()
     print(f"Testing on data file: {data_file}")
-    
+
     # Load just a small sample to be fast
     # nrows=1000 to get enough variety
-    df = pd.read_csv(data_file, nrows=1000)
-    
+    data = pd.read_csv(data_file, nrows=1000)
+
     # Run full pipeline on this sample
-    df = clean_data(df)
-    df = feature_engineering(df)
-    
+    data = clean_data(data)
+    data = feature_engineering(data)
+
     # Separate features and target (if exists)
-    if 'isFraud' in df.columns:
-        X = df.drop(columns=['isFraud'])
-        y = df['isFraud']
+    if 'isFraud' in data.columns:
+        features = data.drop(columns=['isFraud'])
+        target = data['isFraud']
     else:
-        X = df
-        y = None
-    
+        features = data
+        target = None
+
     # Load Model
     detector = FraudDetector()
     detector.load_model(MODEL_PATH)
-    
+
     # Predict
-    preds = detector.predict(X)
-    probs = detector.predict_proba(X)
-    
+    preds = detector.predict(features)
+    probs = detector.predict_proba(features)
+
     # Assertions
-    assert len(preds) == len(X)
-    assert len(probs) == len(X)
-    
+    assert len(preds) == len(features)
+    assert len(probs) == len(features)
+
     # Check probabilities are valid (0 to 1)
     # probs is usually [n_samples, 2] for binary classification
     assert probs.shape[1] == 2
     assert (probs >= 0).all() and (probs <= 1).all()
-    
+
     # Check if we can detect at least one "Safe" transaction (should be easy)
     # In 1000 rows of PaySim, most are safe (0).
     assert 0 in preds
-    
+
     # Optional: We know y exists if we loaded from csv with isFraud column
-    if y is not None and 1 in y.values:
+    if target is not None and 1 in target.values:
         # Just verifying we can inspect it, logic flow check
         pass

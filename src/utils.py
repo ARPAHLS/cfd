@@ -1,3 +1,6 @@
+"""
+Utility functions for the Credit Card Fraud Detection System.
+"""
 import logging
 import json
 import sys
@@ -14,8 +17,8 @@ def setup_logging(log_dir="logs"):
 
     log_filename = os.path.join(log_dir, f"audit_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json")
 
-    logger = logging.getLogger("CreditCardFraud")
-    logger.setLevel(logging.INFO)
+    logit = logging.getLogger("CreditCardFraud")
+    logit.setLevel(logging.INFO)
 
     # JSON Formatter
     class JsonFormatter(logging.Formatter):
@@ -35,13 +38,13 @@ def setup_logging(log_dir="logs"):
     # File Handler
     file_handler = logging.FileHandler(log_filename)
     file_handler.setFormatter(JsonFormatter())
-    logger.addHandler(file_handler)
+    logit.addHandler(file_handler)
 
     # Console Handler (Human readable for dev)
     console_handler = logging.StreamHandler(sys.stdout)
     console_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
-    logger.addHandler(console_handler)
+    logit.addHandler(console_handler)
 
-    return logger
+    return logit
 
 logger = setup_logging()
