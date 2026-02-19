@@ -32,6 +32,20 @@ pytest tests/test_components.py
 pytest tests/test_integration.py
 ```
 
+## 3. Leakage Tests (`tests/test_leakage.py`)
+
+**Purpose**: To ensure the model is learning real patterns, not memorizing "giveaway" features that predict the target perfectly.
+
+**What it covers**:
+*   **Correlation Checks**: Scans all engineered features to ensure none have a correlation of 1.0 (or -1.0) with the `isFraud` target.
+*   **Specific Feature Verification**: Explicitly checks `errorBalanceOrig` to confirm it is not a perfect predictor, validating that the high model performance is genuine.
+
+**When to run**: continuously, especially after adding new features.
+
+```bash
+pytest tests/test_leakage.py
+```
+
 ## Running All Tests
 
 To execute the full test suite:
